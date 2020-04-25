@@ -1,7 +1,9 @@
 package br.com.fiap.entity;
 
 import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,6 +11,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -38,7 +43,14 @@ public class Locacao {
 	@Column(name = "ds_tipo", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TipoLocacao tipo;
-
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "cd_cliente", nullable = false)
+	private Cliente cliente;
+	
+	@ManyToMany(mappedBy = "locacoes")
+	private List<Livro> livros;
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -77,5 +89,21 @@ public class Locacao {
 
 	public void setTipo(TipoLocacao tipo) {
 		this.tipo = tipo;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
 	}
 }

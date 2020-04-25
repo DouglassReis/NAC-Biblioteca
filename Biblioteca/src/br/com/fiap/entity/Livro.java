@@ -1,13 +1,21 @@
 package br.com.fiap.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -38,7 +46,17 @@ public class Livro {
 	@Column(name = "fl_capa")
 	@Lob
 	private byte[] capa;
-
+	
+	@ManyToMany
+	@JoinTable(name = "TB_LIVRO_LOCACAO", 
+		joinColumns = @JoinColumn(name = "cd_livro"),
+		inverseJoinColumns = @JoinColumn(name = "cd_locacao"))
+	private List<Locacao> locacoes;
+	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+	@JoinColumn(name = "cd_editora", nullable = false)
+	private Editora editora;
+		
 	public int getCodigo() {
 		return codigo;
 	}
@@ -85,5 +103,13 @@ public class Livro {
 
 	public void setCapa(byte[] capa) {
 		this.capa = capa;
+	}
+
+	public Editora getEditora() {
+		return editora;
+	}
+
+	public void setEditora(Editora editora) {
+		this.editora = editora;
 	}	
 }

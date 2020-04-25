@@ -1,12 +1,18 @@
 package br.com.fiap.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "TB_EDITORA")
@@ -26,7 +32,15 @@ public class Editora {
 	
 	@Column(name = "nr_telefone", length = 11)
 	private String telefone;
-
+	
+	@OneToMany(mappedBy = "editora", cascade = CascadeType.ALL)
+	private List<Livro> livros = new ArrayList<Livro>();
+	
+	public void adcLivro(Livro livro) {
+		livros.add(livro);
+		livro.setEditora(this);
+	}
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -57,5 +71,13 @@ public class Editora {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
 	}
 }
