@@ -1,4 +1,4 @@
-package br.com.fiap.daoImpl;
+package br.com.fiap.dao.Impl;
 
 import java.lang.reflect.ParameterizedType;
 
