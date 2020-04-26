@@ -8,12 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -43,6 +45,13 @@ public class Locacao {
 	@Column(name = "ds_tipo", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TipoLocacao tipo;
+	
+	@Column(name = "qt_livros", nullable = false)
+	private int qtdLivros;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "cd_locacao", nullable = false, unique = true)
+	private Pagamento pagamento;
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "cd_cliente", nullable = false)
@@ -105,5 +114,13 @@ public class Locacao {
 
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
+	}
+
+	public int getQtdLivros() {
+		return qtdLivros;
+	}
+
+	public void setQtdLivros(int qtdLivros) {
+		this.qtdLivros = qtdLivros;
 	}
 }
