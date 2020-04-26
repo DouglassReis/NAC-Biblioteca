@@ -111,5 +111,17 @@ public class Livro {
 
 	public void setEditora(Editora editora) {
 		this.editora = editora;
+	}
+
+	public Livro(String titulo, Genero genero, String autor, Idioma idioma,
+			Editora editora) {
+		super();
+		this.titulo = titulo;
+		this.genero = genero;
+		this.autor = autor;
+		this.idioma = idioma;
+		this.editora = editora;
 	}	
+	
+	
 }

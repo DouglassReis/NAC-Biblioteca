@@ -76,4 +76,12 @@ public class Cliente {
 	public void setLocacoes(List<Locacao> locacoes) {
 		this.locacoes = locacoes;
 	}
+	public Cliente(String nome, String cpf, String telefone) {
+		super();
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+	}
+	
+	
 }

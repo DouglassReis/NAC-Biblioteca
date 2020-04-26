@@ -73,6 +73,15 @@ public class Pagamento {
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+
+	public Pagamento(Status status, Forma formaPagamento, float valorTotal) {
+		super();
+		this.status = status;
+		this.formaPagamento = formaPagamento;
+		this.valorTotal = valorTotal;
+	}
+	
+	
 	
 	
 }

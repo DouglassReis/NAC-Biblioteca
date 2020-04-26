@@ -80,4 +80,11 @@ public class Editora {
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
+
+	public Editora(String nome) {
+		super();
+		this.nome = nome;
+	}
+	
+	
 }
