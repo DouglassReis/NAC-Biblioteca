@@ -85,6 +85,15 @@ public class Editora {
 		super();
 		this.nome = nome;
 	}
+
+	public Editora(String nome, String cnpj, String telefone) {
+		super();
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.telefone = telefone;
+	}
+	
+	
 	
 	
 }

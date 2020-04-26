@@ -21,7 +21,7 @@ import br.com.fiap.entity.Pagamento;
 import br.com.fiap.entity.Status;
 import br.com.fiap.entity.TipoLocacao;
 import br.com.fiap.exception.CommitException;
-import br.com.fiap.entity.Idioma;
+
 
 
 public class ConsoleView {
@@ -37,11 +37,13 @@ public class ConsoleView {
 		
 		List<Livro> livros = new ArrayList<Livro>();
 		
-		livros.add(new Livro("A Origem das Especies", Genero.LITERATURA_CIENTIFICA, "Charles Darwin", Idioma.PORTUGUES,
-				new Editora("Martin Claret")));
+		Editora e1 = new Editora("Martin Claret", "123456734-12", "1234-1234");
 		
-		livros.add(new Livro("O Hobbit", Genero.FANTASIA, "J.R.R Tolkien", Idioma.PORTUGUES,
-				new Editora("Harper Collins")));
+		Editora e2 = new Editora("Harper Collins", "564456734-12", "2344-6534");
+		
+		livros.add(new Livro("A Origem das Especies", Genero.LITERATURA_CIENTIFICA, "Charles Darwin", Idioma.PORTUGUES, e1));
+		
+		livros.add(new Livro("O Hobbit", Genero.FANTASIA, "J.R.R Tolkien", Idioma.PORTUGUES, e2));
 		
 		locacao.setLivros(livros);
 		
