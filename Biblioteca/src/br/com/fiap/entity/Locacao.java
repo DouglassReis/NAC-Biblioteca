@@ -123,4 +123,25 @@ public class Locacao {
 	public void setQtdLivros(int qtdLivros) {
 		this.qtdLivros = qtdLivros;
 	}
+	
+	
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	public Locacao(Calendar dtInicio, Calendar dtFim, float valor, TipoLocacao tipo, int qtdLivros) {
+		super();
+		this.dtInicio = dtInicio;
+		this.dtFim = dtFim;
+		this.valor = valor;
+		this.tipo = tipo;
+		this.qtdLivros = qtdLivros;
+	}
+	
+	
 }
