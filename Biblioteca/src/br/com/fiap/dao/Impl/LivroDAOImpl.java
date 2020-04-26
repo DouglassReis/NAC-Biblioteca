@@ -10,5 +10,4 @@ public class LivroDAOImpl extends GenericDAOImpl<Livro, Integer> implements Livr
 	public LivroDAOImpl(EntityManager em) {
 		super(em);
 	}
-
 }

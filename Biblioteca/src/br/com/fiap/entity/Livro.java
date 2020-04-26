@@ -47,7 +47,7 @@ public class Livro {
 	@Lob
 	private byte[] capa;
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "TB_LIVRO_LOCACAO", 
 		joinColumns = @JoinColumn(name = "cd_livro"),
 		inverseJoinColumns = @JoinColumn(name = "cd_locacao"))
@@ -121,6 +121,14 @@ public class Livro {
 		this.autor = autor;
 		this.idioma = idioma;
 		this.editora = editora;
+	}
+
+	public List<Locacao> getLocacoes() {
+		return locacoes;
+	}
+
+	public void setLocacoes(List<Locacao> locacoes) {
+		this.locacoes = locacoes;
 	}	
 	
 	

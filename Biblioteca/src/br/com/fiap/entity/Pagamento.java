@@ -35,7 +35,7 @@ public class Pagamento {
 	@Transient
 	private float valorTotal;
 	
-	@OneToOne(mappedBy = "locacao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "pagamento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Locacao locacao;
 	
 	public float calcularValorTotal() {
